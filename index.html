@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beema Fajal | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Creative Career Path Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 60%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            filter: blur(25px) brightness(0.4);
+            transform: scale(1.1);
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(22, 27, 34, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #484f58;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-10 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+
+    <!-- Creative Blur Overlay Background -->
+    <div class="ambient-bg"></div>
+
+    <main class="w-full max-w-5xl space-y-8">
+
+        <!-- ================= HERO SECTION ================= -->
+        <section class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden text-center sm:text-left flex flex-col sm:flex-row items-center gap-8">
+            <!-- Profile Image Container -->
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                <img id="profile-img" src="beema.jpeg" alt="Beema Fajal" class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full object-cover border-2 border-white/20 shadow-2xl">
+            </div>
+
+            <!-- Intro Info -->
+            <div class="flex-1 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span> Portfolio
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+                    Beema Fajal
+                </h1>
+                <p class="text-lg font-medium text-purple-400">
+                    Activity Coordinator <span class="text-gray-500">|</span> Former Web Developer
+                </p>
+                <p class="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+<strong>Beema Fajal</strong>
+<strong>Activity & Events Coordinator</strong>
+I plan school events and field trips, run the social media coverage, and keep the logistics, documentation, and compliance behind them running smoothly.
+                </p>
+
+                <!-- Quick Badges -->
+                <div class="pt-2 flex flex-wrap gap-4 justify-center sm:justify-start text-xs font-semibold text-gray-400">
+                    <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
+                        <i class="fa-solid fa-location-dot text-red-400"></i> Dubai, UAE
+                    </div>
+                    <!-- REPLACE "assets/Beema_Fajal_CV.pdf" WITH YOUR ACTUAL CV FILE PATH -->
+                    <a href="assets/Beema_Fajal_CV.pdf" target="_blank" rel="noopener" class="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-4 py-1.5 rounded-lg border border-white/10 shadow-lg shadow-blue-600/20 transition">
+                        <i class="fa-solid fa-file-pdf text-red-300"></i> View CV
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MULTI-LEVEL TAB NAVIGATION ================= -->
+        <nav class="glass-card p-2 rounded-2xl flex flex-wrap gap-2 justify-center sm:justify-between items-center">
+            <button onclick="switchTab('about', this)" class="tab-btn active flex-1 min-w-[120px] py-3 px-4 rounded-xl font-medium text-sm text-gray-300 hover:text-white transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-user text-xs"></i> About Me
+            </button>
+            <button onclick="switchTab('experience', this)" class="tab-btn flex-1 min-w-[120px] py-3 px-4 rounded-xl font-medium text-sm text-gray-300 hover:text-white transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-briefcase text-xs"></i> Experience
+            </button>
+            <button onclick="switchTab('tools', this)" class="tab-btn flex-1 min-w-[120px] py-3 px-4 rounded-xl font-medium text-sm text-gray-300 hover:text-white transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-screwdriver-wrench text-xs"></i> Tools & Tech
+            </button>
+            <button onclick="switchTab('projects', this)" class="tab-btn flex-1 min-w-[120px] py-3 px-4 rounded-xl font-medium text-sm text-gray-300 hover:text-white transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-folder-open text-xs"></i> Projects
+            </button>
+            <button onclick="switchTab('achievements', this)" class="tab-btn flex-1 min-w-[120px] py-3 px-4 rounded-xl font-medium text-sm text-gray-300 hover:text-white transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-trophy text-xs"></i> Achievements
+            </button>
+            <button onclick="switchTab('contact', this)" class="tab-btn flex-1 min-w-[120px] py-3 px-4 rounded-xl font-medium text-sm text-gray-300 hover:text-white transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-envelope text-xs"></i> Contact
+            </button>
+        </nav>
+
+        <!-- ================= TAB CONTENT PANELS ================= -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 min-h-[420px]">
+
+            <!-- 1. ABOUT ME TAB -->
+            <div id="tab-about" class="tab-content active space-y-6">
+                <h2 class="text-2xl font-bold text-white border-b border-white/10 pb-3 flex items-center gap-3">
+                    <i class="fa-solid fa-id-card text-blue-400"></i> About Me
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4 text-gray-300 leading-relaxed text-sm">
+                        <p>
+                            I'm <strong>Beema Fajal</strong> — a composed, detail-oriented professional who values structure, precision, and follow-through. I stay measured under pressure, adapt quickly to new environments, and hold myself to a high standard in all I do.I work across three languages, I bring discipline and quiet dedication to every task.
+                        </p>
+                        <p>
+                            At <strong class="text-white">The Indian Academy, Dubai</strong>, I orchestrate dynamic school programs, social media video campaigns, and interactive extracurriculars that spark community spirit and creativity.
+                        </p>
+                        <p>
+                            My background at <strong class="text-white">Ways Ahead Global</strong> gave me strong technical foundations in web standards, responsive design frameworks, and modern web application development.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Cards -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition">
+                            <i class="fa-solid fa-bullhorn text-2xl text-purple-400 mb-2"></i>
+                            <h3 class="font-bold text-white text-base">Event Execution</h3>
+                            <p class="text-xs text-gray-400 mt-1">Planning large-scale school activities and cultural events in Dubai.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition">
+                            <i class="fa-solid fa-code text-2xl text-blue-400 mb-2"></i>
+                            <h3 class="font-bold text-white text-base">Web Development</h3>
+                            <p class="text-xs text-gray-400 mt-1">Building responsive, accessible, and high-performance websites.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition">
+                            <i class="fa-solid fa-video text-2xl text-pink-400 mb-2"></i>
+                            <h3 class="font-bold text-white text-base">Content Creation</h3>
+                            <p class="text-xs text-gray-400 mt-1">Designing engaging video promos and digital visual assets.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition">
+                            <i class="fa-solid fa-people-group text-2xl text-green-400 mb-2"></i>
+                            <h3 class="font-bold text-white text-base">Coordination</h3>
+                            <p class="text-xs text-gray-400 mt-1">Cross-functional team leadership and stakeholder communication.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. EXPERIENCE TAB -->
+            <div id="tab-experience" class="tab-content space-y-6">
+                <h2 class="text-2xl font-bold text-white border-b border-white/10 pb-3 flex items-center gap-3">
+                    <i class="fa-solid fa-briefcase text-purple-400"></i> Career Journey
+                </h2>
+                
+                <div class="relative border-l-2 border-blue-500/30 ml-4 space-y-8 py-2">
+
+                    <!-- Role 1 -->
+                    <div class="relative pl-6 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 ring-4 ring-blue-500/20 group-hover:scale-125 transition"></div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded bg-blue-500/20 text-blue-300">Present Role</span>
+                        <h3 class="text-xl font-bold text-white mt-2">Activity Coordinator</h3>
+                        <p class="text-sm font-semibold text-purple-400">The Indian Academy — Dubai, UAE</p>
+                        <ul class="mt-3 list-disc list-inside text-sm text-gray-300 space-y-1.5">
+                            <li>Manage end-to-end planning and logistics for co-curricular activities, competitions, and ceremonies.</li>
+                            <li>Produce video and graphical content for institutional social media channels and announcements.</li>
+                            <li>Coordinate with staff, students, and vendors to ensure seamless event execution.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 2 -->
+                    <div class="relative pl-6 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 ring-4 ring-purple-500/20 group-hover:scale-125 transition"></div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded bg-purple-500/20 text-purple-300">Previous Experience</span>
+                        <h3 class="text-xl font-bold text-white mt-2">Website Developer</h3>
+                        <p class="text-sm font-semibold text-purple-400">Ways Ahead Global</p>
+                        <ul class="mt-3 list-disc list-inside text-sm text-gray-300 space-y-1.5">
+                            <li>Designed, developed, and maintained client website solutions ensuring user-centric responsive design.</li>
+                            <li>Optimized UI/UX components, cross-browser compatibility, and web load speed.</li>
+                            <li>Collaborated with design and analytics teams to implement custom features.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <h2 class="text-2xl font-bold text-white border-b border-white/10 pb-3 flex items-center gap-3 pt-4">
+                    <i class="fa-solid fa-graduation-cap text-yellow-400"></i> Education
+                </h2>
+
+                <div class="relative border-l-2 border-purple-500/30 ml-4 space-y-8 py-2">
+
+                    <div class="relative pl-6 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-yellow-500 ring-4 ring-yellow-500/20 group-hover:scale-125 transition"></div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded bg-yellow-500/20 text-yellow-300">2024</span>
+                        <h3 class="text-xl font-bold text-white mt-2">Diploma in Digital Marketing</h3>
+                        <p class="text-sm font-semibold text-purple-400">DigitalX Academy</p>
+                    </div>
+
+                    <div class="relative pl-6 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 ring-4 ring-blue-500/20 group-hover:scale-125 transition"></div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded bg-blue-500/20 text-blue-300">2006 – 2010</span>
+                        <h3 class="text-xl font-bold text-white mt-2">B-Tech — Computer Science</h3>
+                        <p class="text-sm font-semibold text-purple-400">Cochin University</p>
+                    </div>
+
+                    <div class="relative pl-6 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-green-500 ring-4 ring-green-500/20 group-hover:scale-125 transition"></div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded bg-green-500/20 text-green-300">2004 – 2006</span>
+                        <h3 class="text-xl font-bold text-white mt-2">Higher Secondary</h3>
+                        <p class="text-sm font-semibold text-purple-400">Model Technical HSS</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 3. TOOLS & TECH STACK TAB -->
+            <div id="tab-tools" class="tab-content space-y-6">
+                <h2 class="text-2xl font-bold text-white border-b border-white/10 pb-3 flex items-center gap-3">
+                    <i class="fa-solid fa-screwdriver-wrench text-green-400"></i> Skills & Tools
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3">
+                        <h3 class="font-bold text-blue-400 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-check"></i> Events & Activity Coordination
+                        </h3>
+                        <div class="flex flex-wrap gap-2 text-xs text-gray-200">
+                            <span class="px-2.5 py-1 rounded-lg bg-blue-500/15 border border-blue-500/20">Planning</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-blue-500/15 border border-blue-500/20">Execution</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-blue-500/15 border border-blue-500/20">Scheduling</span>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3">
+                        <h3 class="font-bold text-purple-400 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-bus"></i> Field Trips & Logistics
+                        </h3>
+                        <div class="flex flex-wrap gap-2 text-xs text-gray-200">
+                            <span class="px-2.5 py-1 rounded-lg bg-purple-500/15 border border-purple-500/20">Logistics</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-purple-500/15 border border-purple-500/20">KHDA Compliance</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-purple-500/15 border border-purple-500/20">Safety</span>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3">
+                        <h3 class="font-bold text-pink-400 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-hashtag"></i> Social Media & Content
+                        </h3>
+                        <div class="flex flex-wrap gap-2 text-xs text-gray-200">
+                            <span class="px-2.5 py-1 rounded-lg bg-pink-500/15 border border-pink-500/20">CapCut</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-pink-500/15 border border-pink-500/20">Canva</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-pink-500/15 border border-pink-500/20">AI Utilisation</span>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3">
+                        <h3 class="font-bold text-yellow-400 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-camera"></i> Photography & Documentation
+                        </h3>
+                        <div class="flex flex-wrap gap-2 text-xs text-gray-200">
+                            <span class="px-2.5 py-1 rounded-lg bg-yellow-500/15 border border-yellow-500/20">Photography</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-yellow-500/15 border border-yellow-500/20">Reporting</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-yellow-500/15 border border-yellow-500/20">Branding</span>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3">
+                        <h3 class="font-bold text-green-400 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-handshake"></i> Coordination & Communication
+                        </h3>
+                        <div class="flex flex-wrap gap-2 text-xs text-gray-200">
+                            <span class="px-2.5 py-1 rounded-lg bg-green-500/15 border border-green-500/20">Vendor Liaison</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-green-500/15 border border-green-500/20">Stakeholder Management</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-green-500/15 border border-green-500/20">Collaboration</span>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3">
+                        <h3 class="font-bold text-orange-400 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-list-check"></i> Core Skills
+                        </h3>
+                        <div class="flex flex-wrap gap-2 text-xs text-gray-200">
+                            <span class="px-2.5 py-1 rounded-lg bg-orange-500/15 border border-orange-500/20">Multitasking</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-orange-500/15 border border-orange-500/20">Organization</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-orange-500/15 border border-orange-500/20">Time Management</span>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3">
+                        <h3 class="font-bold text-cyan-400 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-language"></i> Languages
+                        </h3>
+                        <div class="flex flex-wrap gap-2 text-xs text-gray-200">
+                            <span class="px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-500/20">English</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-500/20">Hindi</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-500/20">Malayalam</span>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3">
+                        <h3 class="font-bold text-indigo-400 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-code"></i> Web Development
+                        </h3>
+                        <div class="flex flex-wrap gap-2 text-xs text-gray-200">
+                            <span class="px-2.5 py-1 rounded-lg bg-indigo-500/15 border border-indigo-500/20">HTML</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-indigo-500/15 border border-indigo-500/20">CSS</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-indigo-500/15 border border-indigo-500/20">JavaScript</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 4. PROJECTS TAB -->
+            <div id="tab-projects" class="tab-content space-y-6">
+                <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-folder-open text-yellow-400"></i> Featured Projects & Videos
+                    </h2>
+                </div>
+
+                <p class="text-xs text-gray-400">Explore my previous web development creations and social media video reels produced for institutional activities.</p>
+
+                <!-- Dynamic Project Grid Container -->
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Default Hardcoded Initial Items (shown only until live projects load) -->
+                    
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-between hover:border-blue-500/40 transition">
+                        <div class="space-y-3">
+                            <div class="relative aspect-video rounded-xl overflow-hidden bg-black/40 border border-white/10">
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80" alt="Event Reel" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-pink-500/20 text-pink-300">Social Video Reel</span>
+                            <h3 class="font-bold text-white text-base">Annual Sports Day Reel</h3>
+                            <p class="text-xs text-gray-400">Promotional activity video edited for social media channels at The Indian Academy Dubai.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-between hover:border-blue-500/40 transition">
+                        <div class="space-y-3">
+                            <div class="relative aspect-video rounded-xl overflow-hidden bg-black/40 border border-white/10">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Website UI" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">Web Development</span>
+                            <h3 class="font-bold text-white text-base">Ways Ahead Analytics Portal</h3>
+                            <p class="text-xs text-gray-400">Responsive web portal developed during tenure as Web Developer at Ways Ahead Global.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-between hover:border-blue-500/40 transition">
+                        <div class="space-y-3">
+                            <div class="relative aspect-video rounded-xl overflow-hidden bg-black/40 border border-white/10">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="Event Graphic" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-green-500/20 text-green-300">Event Branding</span>
+                            <h3 class="font-bold text-white text-base">Cultural Fest Campaign</h3>
+                            <p class="text-xs text-gray-400">Complete visual identity and graphic campaign for school exhibition event.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 5. ACHIEVEMENTS TAB -->
+            <div id="tab-achievements" class="tab-content space-y-6">
+                <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-trophy text-yellow-400"></i> Achievements & Certifications
+                    </h2>
+                </div>
+
+                <p class="text-xs text-gray-400">Certifications, awards, and milestones — saved permanently to the database.</p>
+
+                <div id="achievements-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <p class="text-xs text-gray-500">Loading…</p>
+                </div>
+            </div>
+
+            <!-- 6. CONTACT ME TAB -->
+            <div id="tab-contact" class="tab-content space-y-6">
+                <h2 class="text-2xl font-bold text-white border-b border-white/10 pb-3 flex items-center gap-3">
+                    <i class="fa-solid fa-paper-plane text-blue-400"></i> Contact Me
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Direct Email</p>
+                                <p class="text-xs font-bold text-white">beema.neenu@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">
+                                <i class="fa-solid fa-building-user"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Current Workplace</p>
+                                <p class="text-xs font-bold text-white">The Indian Academy, Dubai</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Location</p>
+                                <p class="text-xs font-bold text-white">Dubai, United Arab Emirates</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formspree Contact Form -->
+                    <form id="contact-form" action="" method="POST" class="md:col-span-2 space-y-4" onsubmit="handleContactSubmit(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Your Name</label>
+                                <input type="text" name="name" required placeholder="John Doe" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Your Email</label>
+                                <input type="email" name="email" required placeholder="john@example.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Subject</label>
+                            <input type="text" name="subject" required placeholder="Inquiry / Collaboration" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Message</label>
+                            <textarea name="message" rows="4" required placeholder="Write your message here..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition"></textarea>
+                        </div>
+
+                        <!-- Status Message Display Block -->
+                        <div id="contact-status" class="hidden p-3 rounded-xl text-xs font-medium text-center"></div>
+
+                        <button id="contact-submit-btn" type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-3 px-6 rounded-xl transition shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-xs"></i> Send Message
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- 7. HIDDEN ADMIN DASHBOARD TAB (OWNER ACCESS ONLY) -->
+            <div id="tab-admin" class="tab-content space-y-6">
+                <h2 class="text-2xl font-bold text-amber-400 border-b border-amber-500/20 pb-3 flex items-center gap-3">
+                    <i class="fa-solid fa-user-gear"></i> Owner Dashboard — Manage Projects & Videos
+                </h2>
+                
+                <p class="text-xs text-gray-400">Add new projects, or edit and delete the ones already published. Uploaded files are stored permanently in your Supabase Storage bucket.</p>
+
+                <form id="add-project-form" onsubmit="handleNewProjectSubmit(event)" class="space-y-4 max-w-2xl bg-white/5 p-6 rounded-2xl border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <h3 id="form-heading" class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-plus text-amber-400"></i> Add a new project</h3>
+                        <button type="button" id="cancel-edit-btn" onclick="cancelEdit()" class="hidden text-xs font-semibold text-gray-300 hover:text-white bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition">
+                            <i class="fa-solid fa-xmark"></i> Cancel edit
+                        </button>
+                    </div>
+
+                    <input type="hidden" id="editing-id" value="">
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Project Title</label>
+                        <input type="text" id="new-title" required placeholder="e.g. Science Fair Video Highlight" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Category</label>
+                            <select id="new-category" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+                                <option value="Social Video Reel">Social Video Reel</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="Event Branding">Event Branding</option>
+                                <option value="Activity Promo">Activity Promo</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Media Source Type</label>
+                            <select id="new-type" onchange="toggleMediaInputSource()" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+                                <option value="local-video">Upload Video File (From Computer)</option>
+                                <option value="local-image">Upload Image File (From Computer)</option>
+                                <option value="url">External Web Link / URL</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Local File Picker Field -->
+                    <div id="file-upload-container">
+                        <label class="block text-xs font-semibold text-gray-300 mb-1" id="file-label">Select Video File (.mp4, .webm, .mov)</label>
+                        <input type="file" id="new-media-file" accept="video/*" required class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-gray-300 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-black hover:file:bg-amber-400 cursor-pointer">
+                        <p id="keep-media-hint" class="hidden text-[11px] text-gray-500 mt-1">Leave this empty to keep the current file. Pick a new file only if you want to replace it.</p>
+                    </div>
+
+                    <!-- External Web URL Field (Hidden by Default) -->
+                    <div id="url-upload-container" class="hidden">
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Video / Image Web URL</label>
+                        <input type="url" id="new-media-url" placeholder="https://..." class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Short Description</label>
+                        <textarea id="new-description" rows="3" required placeholder="Brief description of the work..." class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400"></textarea>
+                    </div>
+
+                    <button id="submit-btn" type="submit" class="bg-amber-500 hover:bg-amber-400 text-black font-bold py-2.5 px-6 rounded-xl transition text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload & Publish Project
+                    </button>
+                </form>
+
+                <!-- Manage existing projects -->
+                <div class="max-w-2xl space-y-3">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2 pt-2"><i class="fa-solid fa-list text-amber-400"></i> Manage existing projects</h3>
+                    <div id="admin-projects-list" class="space-y-2">
+                        <p class="text-xs text-gray-500">Loading…</p>
+                    </div>
+                </div>
+
+                <!-- ===================== ACHIEVEMENTS MANAGEMENT ===================== -->
+                <div class="border-t border-white/10 pt-6 mt-4">
+                    <h2 class="text-xl font-bold text-yellow-400 flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-trophy"></i> Manage Achievements
+                    </h2>
+
+                    <form id="add-achievement-form" onsubmit="handleAchievementSubmit(event)" class="space-y-4 max-w-2xl bg-white/5 p-6 rounded-2xl border border-white/10">
+                        <div class="flex items-center justify-between">
+                            <h3 id="ach-form-heading" class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-plus text-yellow-400"></i> Add a new achievement</h3>
+                            <button type="button" id="ach-cancel-edit-btn" onclick="cancelAchievementEdit()" class="hidden text-xs font-semibold text-gray-300 hover:text-white bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition">
+                                <i class="fa-solid fa-xmark"></i> Cancel edit
+                            </button>
+                        </div>
+
+                        <input type="hidden" id="ach-editing-id" value="">
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Title</label>
+                            <input type="text" id="ach-title" required placeholder="e.g. Diploma in Digital Marketing" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-yellow-400">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Issuer / Institution</label>
+                                <input type="text" id="ach-issuer" placeholder="e.g. DigitalX Academy" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-yellow-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Year</label>
+                                <input type="text" id="ach-year" placeholder="e.g. 2024" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-yellow-400">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Short Description (optional)</label>
+                            <textarea id="ach-description" rows="2" placeholder="Any extra detail about this achievement..." class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-yellow-400"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Media (optional — certificate image or video)</label>
+                            <select id="ach-type" onchange="toggleAchievementMediaSource()" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-yellow-400">
+                                <option value="none">No media</option>
+                                <option value="local-image">Upload Image File (From Computer)</option>
+                                <option value="local-video">Upload Video File (From Computer)</option>
+                                <option value="url">External Web Link / URL</option>
+                            </select>
+                        </div>
+
+                        <!-- Local File Picker Field (hidden by default) -->
+                        <div id="ach-file-container" class="hidden">
+                            <label class="block text-xs font-semibold text-gray-300 mb-1" id="ach-file-label">Select Image File (.png, .jpg, .webp)</label>
+                            <input type="file" id="ach-media-file" accept="image/*" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-gray-300 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-yellow-500 file:text-black hover:file:bg-yellow-400 cursor-pointer">
+                            <p id="ach-keep-media-hint" class="hidden text-[11px] text-gray-500 mt-1">Leave empty to keep the current media. Pick a new file only to replace it.</p>
+                        </div>
+
+                        <!-- External Web URL Field (hidden by default) -->
+                        <div id="ach-url-container" class="hidden">
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Media Web URL</label>
+                            <input type="url" id="ach-media-url" placeholder="https://..." class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-yellow-400">
+                        </div>
+
+                        <button id="ach-submit-btn" type="submit" class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2.5 px-6 rounded-xl transition text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Save Achievement
+                        </button>
+                    </form>
+
+                    <div class="max-w-2xl space-y-3 mt-4">
+                        <h3 class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-list text-yellow-400"></i> Manage existing achievements</h3>
+                        <div id="admin-achievements-list" class="space-y-2">
+                            <p class="text-xs text-gray-500">Loading…</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= PASSWORD MODAL FOR ADMIN ACCESS ================= -->
+        <div id="admin-auth-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+            <div class="glass-card max-w-sm w-full p-6 rounded-3xl space-y-4 border border-white/20 text-center">
+                <div class="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xl">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-lg">Owner Authorization</h3>
+                    <p class="text-xs text-gray-400 mt-1">Enter your password to unlock the admin dashboard.</p>
+                </div>
+                <div>
+                    <input type="password" id="admin-pass-input" placeholder="Enter Owner Password" class="w-full bg-black/40 border border-white/10 text-sm rounded-xl p-3 text-white text-center focus:outline-none focus:border-amber-400">
+                    <p id="auth-error-msg" class="text-xs text-red-400 mt-2 hidden">Incorrect Password! Access Denied.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="closeAuthModal()" class="flex-1 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-bold py-2.5 rounded-xl transition">Cancel</button>
+                    <button onclick="verifyAdminPassword()" class="flex-1 bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold py-2.5 rounded-xl transition">Unlock</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer with Hidden Admin Trigger -->
+        <footer class="text-center text-xs text-gray-500 pt-4 flex justify-between items-center px-4">
+            <span>&copy; <span id="year"></span> Beema Fajal. All rights reserved.</span>
+            <!-- Hidden Admin Lock Toggle with Password Protection -->
+            <button onclick="requestAdminAccess()" class="text-gray-600 hover:text-amber-400 transition p-1" title="Owner Panel Access">
+                <i class="fa-solid fa-lock text-[10px]"></i>
+            </button>
+        </footer>
+
+    </main>
+
+    <!-- ================= JAVASCRIPT & CONFIGURATION ================= -->
+    <script>
+        // =========================================================================
+        // 🔒 SECRET CONFIGURATION KEYS & OWNER PASSWORD
+        // =========================================================================
+        const CONFIG = {
+            // Secret Password for accessing the Owner Dashboard
+            ADMIN_PASSWORD: "beema128",
+
+            // Paste your Formspree Endpoint URL here (e.g. "https://formspree.io/f/xxbvwqol")
+            FORMSPREE_URL: "https://formspree.io/f/xwlekzkv",
+
+            // Supabase Project URL — FIXED: lowercase https and .co (not .com)
+            SUPABASE_URL: "https://padkremgwkvgsbuwaaru.supabase.co",
+
+            // Supabase Anon / Publishable API Key
+            SUPABASE_ANON_KEY: "sb_publishable_0WrUiut9RlLm8j-oRls8RA_vZqqNgIT",
+
+            // Name of the Supabase Public Storage Bucket created for media uploads
+            STORAGE_BUCKET_NAME: "portfolio-media"
+        };
+        // =========================================================================
+
+        let supabaseClient = null;
+        let isAdminAuthenticated = false;
+        let ALL_PROJECTS = [];       // live projects loaded from the database
+        let ALL_ACHIEVEMENTS = [];   // live achievements loaded from the database
+
+        // Initialize Page & DB Configuration
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Set Formspree Action URL directly from internal CONFIG
+            if (CONFIG.FORMSPREE_URL && !CONFIG.FORMSPREE_URL.includes("YOUR_FORMSPREE_KEY_HERE")) {
+                document.getElementById('contact-form').action = CONFIG.FORMSPREE_URL;
+            }
+
+            // Initialize Supabase if keys are provided
+            if (CONFIG.SUPABASE_URL && !CONFIG.SUPABASE_URL.includes("YOUR_SUPABASE_URL_HERE")) {
+                try {
+                    supabaseClient = supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
+                    loadProjectsFromSupabase();
+                    loadAchievementsFromSupabase();
+                } catch(e) {
+                    console.log("Supabase initialization skipped or failed: ", e);
+                }
+            }
+        });
+
+        // 1. Tab Navigation Function
+        function switchTab(tabId, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            if (btnElement && btnElement.classList.contains('tab-btn')) {
+                btnElement.classList.add('active');
+            }
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+
+        // 2. Toggle Media Input Source (Local File vs URL)
+        function toggleMediaInputSource() {
+            const sourceType = document.getElementById('new-type').value;
+            const fileContainer = document.getElementById('file-upload-container');
+            const urlContainer = document.getElementById('url-upload-container');
+            const fileInput = document.getElementById('new-media-file');
+            const fileLabel = document.getElementById('file-label');
+            const editing = !!document.getElementById('editing-id').value;
+
+            if (sourceType === 'local-video') {
+                fileContainer.classList.remove('hidden');
+                urlContainer.classList.add('hidden');
+                fileInput.accept = "video/*";
+                fileInput.required = !editing; // when editing, file is optional (keep existing)
+                fileLabel.textContent = "Select Video File (.mp4, .webm, .mov)";
+            } else if (sourceType === 'local-image') {
+                fileContainer.classList.remove('hidden');
+                urlContainer.classList.add('hidden');
+                fileInput.accept = "image/*";
+                fileInput.required = !editing;
+                fileLabel.textContent = "Select Image File (.png, .jpg, .webp)";
+            } else {
+                fileContainer.classList.add('hidden');
+                urlContainer.classList.remove('hidden');
+                fileInput.required = false;
+            }
+        }
+
+        // 3. Password Access Controls for Owner Dashboard
+        function requestAdminAccess() {
+            if (isAdminAuthenticated) {
+                switchTab('admin', null);
+            } else {
+                document.getElementById('admin-pass-input').value = '';
+                document.getElementById('auth-error-msg').classList.add('hidden');
+                document.getElementById('admin-auth-modal').classList.remove('hidden');
+            }
+        }
+
+        function closeAuthModal() {
+            document.getElementById('admin-auth-modal').classList.add('hidden');
+        }
+
+        function verifyAdminPassword() {
+            const enteredPass = document.getElementById('admin-pass-input').value;
+            if (enteredPass === CONFIG.ADMIN_PASSWORD) {
+                isAdminAuthenticated = true;
+                closeAuthModal();
+                switchTab('admin', null);
+                renderAdminProjectsList();
+                renderAdminAchievementsList();
+            } else {
+                document.getElementById('auth-error-msg').classList.remove('hidden');
+            }
+        }
+
+        // 4. Load Projects dynamically from Supabase
+        async function loadProjectsFromSupabase() {
+            if (!supabaseClient) return;
+            try {
+                const { data, error } = await supabaseClient.from('projects').select('*').order('created_at', { ascending: false });
+                if (error) throw error;
+                ALL_PROJECTS = data || [];
+                renderProjectsGrid();
+                renderAdminProjectsList();
+            } catch (err) {
+                console.error("Error loading projects from Supabase:", err.message);
+            }
+        }
+
+        // 5. Build the public-facing projects grid from ALL_PROJECTS
+        function renderProjectsGrid() {
+            const grid = document.getElementById('projects-grid');
+            if (!ALL_PROJECTS.length) return; // keep the hardcoded placeholders if nothing saved yet
+            grid.innerHTML = ALL_PROJECTS.map(projectCardHTML).join('');
+        }
+
+        function projectCardHTML(item) {
+            let mediaElement = '';
+            if (item.media_type === 'video' || item.media_type === 'local-video') {
+                if (item.media_url && (item.media_url.includes('youtube.com') || item.media_url.includes('youtu.be'))) {
+                    const embedUrl = item.media_url.replace("watch?v=", "embed/");
+                    mediaElement = `<iframe class="w-full h-full rounded-xl" src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
+                } else {
+                    mediaElement = `<video controls class="w-full h-full object-cover rounded-xl"><source src="${item.media_url}"></video>`;
+                }
+            } else {
+                mediaElement = `<img src="${item.media_url || 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80'}" alt="${escapeHtml(item.title)}" class="w-full h-full object-cover">`;
+            }
+
+            return `
+                <div class="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-between hover:border-blue-500/40 transition">
+                    <div class="space-y-3">
+                        <div class="relative aspect-video rounded-xl overflow-hidden bg-black/40 border border-white/10">
+                            ${mediaElement}
+                        </div>
+                        <span class="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">${escapeHtml(item.category || 'Project')}</span>
+                        <h3 class="font-bold text-white text-base">${escapeHtml(item.title)}</h3>
+                        <p class="text-xs text-gray-400">${escapeHtml(item.description || '')}</p>
+                    </div>
+                </div>`;
+        }
+
+        // 6. Build the owner's management list (edit / delete)
+        function renderAdminProjectsList() {
+            const list = document.getElementById('admin-projects-list');
+            if (!list) return;
+            if (!supabaseClient) {
+                list.innerHTML = `<p class="text-xs text-gray-500">Supabase not connected.</p>`;
+                return;
+            }
+            if (!ALL_PROJECTS.length) {
+                list.innerHTML = `<p class="text-xs text-gray-500">No projects saved yet. Add your first one above.</p>`;
+                return;
+            }
+            list.innerHTML = ALL_PROJECTS.map(item => `
+                <div class="flex items-center gap-3 bg-black/30 border border-white/10 rounded-xl p-3">
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-white truncate">${escapeHtml(item.title)}</p>
+                        <p class="text-[11px] text-gray-400 truncate">${escapeHtml(item.category || '')} · ${escapeHtml(item.media_type || '')}</p>
+                    </div>
+                    <button onclick="startEdit(${item.id})" class="text-xs font-semibold text-blue-300 hover:text-blue-200 bg-blue-500/10 hover:bg-blue-500/20 px-3 py-1.5 rounded-lg transition">
+                        <i class="fa-solid fa-pen"></i> Edit
+                    </button>
+                    <button onclick="deleteProject(${item.id})" class="text-xs font-semibold text-red-300 hover:text-red-200 bg-red-500/10 hover:bg-red-500/20 px-3 py-1.5 rounded-lg transition">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // 7. Start editing an existing project — fill the form
+        function startEdit(id) {
+            const item = ALL_PROJECTS.find(p => p.id === id);
+            if (!item) return;
+
+            document.getElementById('editing-id').value = item.id;
+            document.getElementById('new-title').value = item.title || '';
+            document.getElementById('new-category').value = item.category || 'Social Video Reel';
+            document.getElementById('new-description').value = item.description || '';
+
+            // Show the current media as a URL so the owner can keep or replace it
+            document.getElementById('new-type').value = 'url';
+            document.getElementById('new-media-url').value = item.media_url || '';
+            toggleMediaInputSource();
+
+            // Switch the form into "edit" mode visually
+            document.getElementById('form-heading').innerHTML = '<i class="fa-solid fa-pen text-amber-400"></i> Edit project';
+            document.getElementById('submit-btn').innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Save Changes';
+            document.getElementById('cancel-edit-btn').classList.remove('hidden');
+            document.getElementById('keep-media-hint').classList.remove('hidden');
+
+            // Jump to the form
+            document.getElementById('add-project-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // 8. Cancel edit — reset form back to "add new" mode
+        function cancelEdit() {
+            document.getElementById('editing-id').value = '';
+            document.getElementById('add-project-form').reset();
+            document.getElementById('new-type').value = 'local-video';
+            toggleMediaInputSource();
+            document.getElementById('form-heading').innerHTML = '<i class="fa-solid fa-plus text-amber-400"></i> Add a new project';
+            document.getElementById('submit-btn').innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Upload & Publish Project';
+            document.getElementById('cancel-edit-btn').classList.add('hidden');
+            document.getElementById('keep-media-hint').classList.add('hidden');
+        }
+
+        // 9. Delete a project (and its stored file, best-effort)
+        async function deleteProject(id) {
+            const item = ALL_PROJECTS.find(p => p.id === id);
+            if (!item) return;
+            if (!confirm(`Delete "${item.title}"? This cannot be undone.`)) return;
+
+            try {
+                // Best-effort: remove the uploaded file from storage if it lives in our bucket
+                const marker = `/object/public/${CONFIG.STORAGE_BUCKET_NAME}/`;
+                if (item.media_url && item.media_url.includes(marker)) {
+                    const path = decodeURIComponent(item.media_url.split(marker)[1]);
+                    await supabaseClient.storage.from(CONFIG.STORAGE_BUCKET_NAME).remove([path]);
+                }
+
+                const { error } = await supabaseClient.from('projects').delete().eq('id', id);
+                if (error) throw error;
+
+                await loadProjectsFromSupabase();
+            } catch (err) {
+                alert('Delete failed: ' + err.message);
+            }
+        }
+
+        // 10. Handle Add OR Edit submission
+        async function handleNewProjectSubmit(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            const editingId = document.getElementById('editing-id').value;
+            const existing = editingId ? ALL_PROJECTS.find(p => String(p.id) === String(editingId)) : null;
+
+            const sourceType = document.getElementById('new-type').value;
+            let finalMediaUrl = existing ? existing.media_url : '';
+            let mediaType = existing ? existing.media_type : 'image';
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> ${editingId ? 'Saving…' : 'Uploading…'}`;
+
+                if (sourceType === 'local-video' || sourceType === 'local-image') {
+                    const fileInput = document.getElementById('new-media-file');
+                    const file = fileInput.files[0];
+
+                    if (file && supabaseClient) {
+                        mediaType = sourceType === 'local-video' ? 'video' : 'image';
+                        const fileExt = file.name.split('.').pop();
+                        const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 9)}.${fileExt}`;
+                        const filePath = `${mediaType}s/${fileName}`;
+
+                        const { error: uploadError } = await supabaseClient.storage
+                            .from(CONFIG.STORAGE_BUCKET_NAME)
+                            .upload(filePath, file);
+                        if (uploadError) throw uploadError;
+
+                        const { data: urlData } = supabaseClient.storage
+                            .from(CONFIG.STORAGE_BUCKET_NAME)
+                            .getPublicUrl(filePath);
+                        finalMediaUrl = urlData.publicUrl;
+                    } else if (file) {
+                        mediaType = sourceType === 'local-video' ? 'video' : 'image';
+                        finalMediaUrl = URL.createObjectURL(file);
+                    }
+                    // if editing and no new file chosen, keep the existing media (already set above)
+                } else {
+                    const urlVal = document.getElementById('new-media-url').value.trim();
+                    if (urlVal) {
+                        finalMediaUrl = urlVal;
+                        // guess type from the link; default to video for youtube-style links
+                        mediaType = /\.(png|jpe?g|webp|gif|svg)$/i.test(urlVal) ? 'image' : 'video';
+                    }
+                }
+
+                const project = {
+                    title: document.getElementById('new-title').value.trim(),
+                    category: document.getElementById('new-category').value,
+                    media_type: mediaType,
+                    media_url: finalMediaUrl,
+                    description: document.getElementById('new-description').value.trim()
+                };
+
+                if (!supabaseClient) {
+                    alert('Supabase not connected — cannot save.');
+                    return;
+                }
+
+                if (editingId) {
+                    const { error } = await supabaseClient.from('projects').update(project).eq('id', editingId);
+                    if (error) throw error;
+                    alert('Project updated.');
+                } else {
+                    const { error } = await supabaseClient.from('projects').insert([project]);
+                    if (error) throw error;
+                    alert('Project published and saved to Supabase.');
+                }
+
+                cancelEdit();
+                await loadProjectsFromSupabase();
+                switchTab('projects', document.querySelectorAll('.tab-btn')[3]);
+
+            } catch (err) {
+                alert((editingId ? 'Update' : 'Upload') + ' failed: ' + err.message);
+            } finally {
+                submitBtn.disabled = false;
+                if (document.getElementById('editing-id').value) {
+                    // still editing (an error occurred) — keep the edit label
+                } else {
+                    submitBtn.innerHTML = originalBtnText.includes('Save') ? '<i class="fa-solid fa-cloud-arrow-up"></i> Upload & Publish Project' : originalBtnText;
+                }
+            }
+        }
+
+        // 11. Image Upload Preview Handler
+        function previewProfileImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                document.getElementById('profile-img').src = reader.result;
+            };
+            if (event.target.files[0]) {
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+
+        // 12. Handle Formspree AJAX Submission without Redirection
+        async function handleContactSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const statusDiv = document.getElementById('contact-status');
+            const submitBtn = document.getElementById('contact-submit-btn');
+
+            const actionUrl = form.action || CONFIG.FORMSPREE_URL;
+
+            if (!actionUrl || actionUrl.includes("YOUR_FORMSPREE_KEY_HERE")) {
+                statusDiv.className = "p-3 rounded-xl text-xs font-medium text-center bg-red-500/20 text-red-300 border border-red-500/30";
+                statusDiv.textContent = "Formspree URL is not configured yet in CONFIG.";
+                statusDiv.classList.remove('hidden');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin text-xs"></i> Sending Message...`;
+
+            try {
+                const response = await fetch(actionUrl, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    statusDiv.className = "p-3 rounded-xl text-xs font-medium text-center bg-green-500/20 text-green-300 border border-green-500/30";
+                    statusDiv.textContent = "Message sent successfully! Thank you for reaching out.";
+                    statusDiv.classList.remove('hidden');
+                    form.reset();
+                } else {
+                    const data = await response.json();
+                    statusDiv.className = "p-3 rounded-xl text-xs font-medium text-center bg-red-500/20 text-red-300 border border-red-500/30";
+                    if (data && data.errors) {
+                        statusDiv.textContent = data.errors.map(error => error.message).join(", ");
+                    } else {
+                        statusDiv.textContent = "Oops! Something went wrong while submitting your message.";
+                    }
+                    statusDiv.classList.remove('hidden');
+                }
+            } catch (error) {
+                statusDiv.className = "p-3 rounded-xl text-xs font-medium text-center bg-red-500/20 text-red-300 border border-red-500/30";
+                statusDiv.textContent = "Connection error. Please try again later.";
+                statusDiv.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane text-xs"></i> Send Message`;
+            }
+        }
+
+        // ===================== ACHIEVEMENTS (same DB system as projects) =====================
+
+        async function loadAchievementsFromSupabase() {
+            if (!supabaseClient) return;
+            try {
+                const { data, error } = await supabaseClient.from('achievements').select('*').order('created_at', { ascending: false });
+                if (error) throw error;
+                ALL_ACHIEVEMENTS = data || [];
+                renderAchievementsGrid();
+                renderAdminAchievementsList();
+            } catch (err) {
+                console.error("Error loading achievements from Supabase:", err.message);
+            }
+        }
+
+        function renderAchievementsGrid() {
+            const grid = document.getElementById('achievements-grid');
+            if (!grid) return;
+            if (!ALL_ACHIEVEMENTS.length) {
+                grid.innerHTML = `<p class="text-xs text-gray-500 col-span-full">No achievements added yet.</p>`;
+                return;
+            }
+            grid.innerHTML = ALL_ACHIEVEMENTS.map(a => `
+                <div class="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-yellow-500/30 transition">
+                    ${achievementMediaHTML(a)}
+                    ${a.year ? `<span class="text-xs font-bold px-2.5 py-1 rounded bg-yellow-500/20 text-yellow-300">${escapeHtml(a.year)}</span>` : ''}
+                    <h3 class="text-lg font-bold text-white mt-2">${escapeHtml(a.title)}</h3>
+                    ${a.issuer ? `<p class="text-sm font-semibold text-purple-400">${escapeHtml(a.issuer)}</p>` : ''}
+                    ${a.description ? `<p class="text-xs text-gray-400 mt-1">${escapeHtml(a.description)}</p>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function achievementMediaHTML(a) {
+            if (!a.media_url) return '';
+            let inner = '';
+            if (a.media_type === 'video') {
+                if (a.media_url.includes('youtube.com') || a.media_url.includes('youtu.be')) {
+                    const embedUrl = a.media_url.replace("watch?v=", "embed/");
+                    inner = `<iframe class="w-full h-full rounded-xl" src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
+                } else {
+                    inner = `<video controls class="w-full h-full object-cover rounded-xl"><source src="${a.media_url}"></video>`;
+                }
+            } else {
+                inner = `<img src="${a.media_url}" alt="${escapeHtml(a.title)}" class="w-full h-full object-cover">`;
+            }
+            return `<div class="relative aspect-video rounded-xl overflow-hidden bg-black/40 border border-white/10 mb-3">${inner}</div>`;
+        }
+
+        function renderAdminAchievementsList() {
+            const list = document.getElementById('admin-achievements-list');
+            if (!list) return;
+            if (!supabaseClient) {
+                list.innerHTML = `<p class="text-xs text-gray-500">Supabase not connected.</p>`;
+                return;
+            }
+            if (!ALL_ACHIEVEMENTS.length) {
+                list.innerHTML = `<p class="text-xs text-gray-500">No achievements saved yet. Add your first one above.</p>`;
+                return;
+            }
+            list.innerHTML = ALL_ACHIEVEMENTS.map(a => `
+                <div class="flex items-center gap-3 bg-black/30 border border-white/10 rounded-xl p-3">
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-white truncate">${escapeHtml(a.title)}</p>
+                        <p class="text-[11px] text-gray-400 truncate">${escapeHtml(a.year || '')}${a.issuer ? ' · ' + escapeHtml(a.issuer) : ''}</p>
+                    </div>
+                    <button onclick="startAchievementEdit(${a.id})" class="text-xs font-semibold text-blue-300 hover:text-blue-200 bg-blue-500/10 hover:bg-blue-500/20 px-3 py-1.5 rounded-lg transition">
+                        <i class="fa-solid fa-pen"></i> Edit
+                    </button>
+                    <button onclick="deleteAchievement(${a.id})" class="text-xs font-semibold text-red-300 hover:text-red-200 bg-red-500/10 hover:bg-red-500/20 px-3 py-1.5 rounded-lg transition">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function toggleAchievementMediaSource() {
+            const t = document.getElementById('ach-type').value;
+            const fileC = document.getElementById('ach-file-container');
+            const urlC = document.getElementById('ach-url-container');
+            const fileInput = document.getElementById('ach-media-file');
+            const fileLabel = document.getElementById('ach-file-label');
+
+            if (t === 'local-image') {
+                fileC.classList.remove('hidden'); urlC.classList.add('hidden');
+                fileInput.accept = "image/*";
+                fileLabel.textContent = "Select Image File (.png, .jpg, .webp)";
+            } else if (t === 'local-video') {
+                fileC.classList.remove('hidden'); urlC.classList.add('hidden');
+                fileInput.accept = "video/*";
+                fileLabel.textContent = "Select Video File (.mp4, .webm, .mov)";
+            } else if (t === 'url') {
+                fileC.classList.add('hidden'); urlC.classList.remove('hidden');
+            } else {
+                fileC.classList.add('hidden'); urlC.classList.add('hidden');
+            }
+        }
+
+        function startAchievementEdit(id) {
+            const a = ALL_ACHIEVEMENTS.find(x => x.id === id);
+            if (!a) return;
+            document.getElementById('ach-editing-id').value = a.id;
+            document.getElementById('ach-title').value = a.title || '';
+            document.getElementById('ach-issuer').value = a.issuer || '';
+            document.getElementById('ach-year').value = a.year || '';
+            document.getElementById('ach-description').value = a.description || '';
+
+            // Show current media (if any) as a URL so it can be kept or replaced
+            if (a.media_url) {
+                document.getElementById('ach-type').value = 'url';
+                document.getElementById('ach-media-url').value = a.media_url;
+            } else {
+                document.getElementById('ach-type').value = 'none';
+                document.getElementById('ach-media-url').value = '';
+            }
+            toggleAchievementMediaSource();
+            document.getElementById('ach-keep-media-hint').classList.remove('hidden');
+
+            document.getElementById('ach-form-heading').innerHTML = '<i class="fa-solid fa-pen text-yellow-400"></i> Edit achievement';
+            document.getElementById('ach-submit-btn').innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Save Changes';
+            document.getElementById('ach-cancel-edit-btn').classList.remove('hidden');
+            document.getElementById('add-achievement-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function cancelAchievementEdit() {
+            document.getElementById('ach-editing-id').value = '';
+            document.getElementById('add-achievement-form').reset();
+            document.getElementById('ach-type').value = 'none';
+            toggleAchievementMediaSource();
+            document.getElementById('ach-keep-media-hint').classList.add('hidden');
+            document.getElementById('ach-form-heading').innerHTML = '<i class="fa-solid fa-plus text-yellow-400"></i> Add a new achievement';
+            document.getElementById('ach-submit-btn').innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Save Achievement';
+            document.getElementById('ach-cancel-edit-btn').classList.add('hidden');
+        }
+
+        async function deleteAchievement(id) {
+            const a = ALL_ACHIEVEMENTS.find(x => x.id === id);
+            if (!a) return;
+            if (!confirm(`Delete "${a.title}"? This cannot be undone.`)) return;
+            try {
+                // Best-effort: remove the uploaded file from storage if it lives in our bucket
+                const marker = `/object/public/${CONFIG.STORAGE_BUCKET_NAME}/`;
+                if (a.media_url && a.media_url.includes(marker)) {
+                    const path = decodeURIComponent(a.media_url.split(marker)[1]);
+                    await supabaseClient.storage.from(CONFIG.STORAGE_BUCKET_NAME).remove([path]);
+                }
+                const { error } = await supabaseClient.from('achievements').delete().eq('id', id);
+                if (error) throw error;
+                await loadAchievementsFromSupabase();
+            } catch (err) {
+                alert('Delete failed: ' + err.message);
+            }
+        }
+
+        async function handleAchievementSubmit(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('ach-submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            const editingId = document.getElementById('ach-editing-id').value;
+            const existing = editingId ? ALL_ACHIEVEMENTS.find(x => String(x.id) === String(editingId)) : null;
+
+            const sourceType = document.getElementById('ach-type').value;
+            let finalMediaUrl = existing ? (existing.media_url || '') : '';
+            let mediaType = existing ? (existing.media_type || '') : '';
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> ${editingId ? 'Saving…' : 'Uploading…'}`;
+
+                if (!supabaseClient) { alert('Supabase not connected — cannot save.'); return; }
+
+                if (sourceType === 'local-image' || sourceType === 'local-video') {
+                    const file = document.getElementById('ach-media-file').files[0];
+                    if (file) {
+                        mediaType = sourceType === 'local-video' ? 'video' : 'image';
+                        const fileExt = file.name.split('.').pop();
+                        const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 9)}.${fileExt}`;
+                        const filePath = `${mediaType}s/${fileName}`;
+
+                        const { error: uploadError } = await supabaseClient.storage
+                            .from(CONFIG.STORAGE_BUCKET_NAME).upload(filePath, file);
+                        if (uploadError) throw uploadError;
+
+                        const { data: urlData } = supabaseClient.storage
+                            .from(CONFIG.STORAGE_BUCKET_NAME).getPublicUrl(filePath);
+                        finalMediaUrl = urlData.publicUrl;
+                    }
+                    // editing with no new file chosen keeps existing media
+                } else if (sourceType === 'url') {
+                    const urlVal = document.getElementById('ach-media-url').value.trim();
+                    finalMediaUrl = urlVal;
+                    mediaType = /\.(png|jpe?g|webp|gif|svg)$/i.test(urlVal) ? 'image' : 'video';
+                    if (!urlVal) { finalMediaUrl = ''; mediaType = ''; }
+                } else {
+                    // "none" — clear media
+                    finalMediaUrl = '';
+                    mediaType = '';
+                }
+
+                const achievement = {
+                    title: document.getElementById('ach-title').value.trim(),
+                    issuer: document.getElementById('ach-issuer').value.trim(),
+                    year: document.getElementById('ach-year').value.trim(),
+                    description: document.getElementById('ach-description').value.trim(),
+                    media_type: mediaType,
+                    media_url: finalMediaUrl
+                };
+
+                if (editingId) {
+                    const { error } = await supabaseClient.from('achievements').update(achievement).eq('id', editingId);
+                    if (error) throw error;
+                } else {
+                    const { error } = await supabaseClient.from('achievements').insert([achievement]);
+                    if (error) throw error;
+                }
+
+                cancelAchievementEdit();
+                await loadAchievementsFromSupabase();
+                switchTab('achievements', document.querySelectorAll('.tab-btn')[4]);
+            } catch (err) {
+                alert((editingId ? 'Update' : 'Save') + ' failed: ' + err.message);
+            } finally {
+                submitBtn.disabled = false;
+                if (!document.getElementById('ach-editing-id').value) {
+                    submitBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Save Achievement';
+                } else {
+                    submitBtn.innerHTML = originalBtnText;
+                }
+            }
+        }
+
+        // Small helper to keep injected text safe
+        function escapeHtml(s) {
+            return (s || '').replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+        }
+    </script>
+</body>
+</html>
