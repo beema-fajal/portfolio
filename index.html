@@ -55,7 +55,7 @@
 
             <div class="flex-1 space-y-3">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
-                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span> <span id="hero-badge-text"> Portfolio</span>
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span> <span id="hero-badge-text">Professional Portfolio</span>
                 </div>
                 <h1 id="hero-name" class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">Beema Fajal</h1>
                 <p id="hero-role" class="text-lg font-medium text-purple-400">Activity Coordinator | Former Web Developer</p>
@@ -310,7 +310,7 @@
                         </div>
                         <input type="hidden" id="editing-id" value="">
                         <div><label class="lbl">Project Title</label><input type="text" id="new-title" required class="field" placeholder="e.g. Science Fair Video Highlight"></div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <div><label class="lbl">Category</label>
                                 <select id="new-category" class="field">
                                     <option value="Social Video Reel">Social Video Reel</option>
@@ -324,6 +324,12 @@
                                     <option value="local-video">Upload Video File</option>
                                     <option value="local-image">Upload Image File</option>
                                     <option value="url">External Web Link / URL</option>
+                                </select>
+                            </div>
+                            <div><label class="lbl">Orientation</label>
+                                <select id="new-orientation" class="field">
+                                    <option value="landscape">Landscape (16:9)</option>
+                                    <option value="portrait">Portrait (3:4)</option>
                                 </select>
                             </div>
                         </div>
@@ -357,14 +363,23 @@
                             <div><label class="lbl">Year</label><input type="text" id="ach-year" class="field" placeholder="e.g. 2024"></div>
                         </div>
                         <div><label class="lbl">Short Description (optional)</label><textarea id="ach-description" rows="2" class="field"></textarea></div>
-                        <div>
-                            <label class="lbl">Media (optional — certificate image or video)</label>
-                            <select id="ach-type" onchange="toggleAchievementMediaSource()" class="field">
-                                <option value="none">No media</option>
-                                <option value="local-image">Upload Image File</option>
-                                <option value="local-video">Upload Video File</option>
-                                <option value="url">External Web Link / URL</option>
-                            </select>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="lbl">Media (optional — certificate image or video)</label>
+                                <select id="ach-type" onchange="toggleAchievementMediaSource()" class="field">
+                                    <option value="none">No media</option>
+                                    <option value="local-image">Upload Image File</option>
+                                    <option value="local-video">Upload Video File</option>
+                                    <option value="url">External Web Link / URL</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="lbl">Orientation</label>
+                                <select id="ach-orientation" class="field">
+                                    <option value="landscape">Landscape (16:9)</option>
+                                    <option value="portrait">Portrait (3:4)</option>
+                                </select>
+                            </div>
                         </div>
                         <div id="ach-file-container" class="hidden">
                             <label class="lbl" id="ach-file-label">Select Image File</label>
@@ -884,9 +899,10 @@
             } else {
                 media = `<img src="${item.media_url || 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80'}" alt="${escapeHtml(item.title)}" class="w-full h-full object-cover">`;
             }
+            const aspectClass = (item.orientation === 'portrait') ? 'aspect-[3/4]' : 'aspect-video';
             return `<div class="p-4 rounded-2xl bg-white/5 border border-white/5 flex flex-col justify-between hover:border-blue-500/40 transition">
                 <div class="space-y-3">
-                    <div class="relative aspect-video rounded-xl overflow-hidden bg-black/40 border border-white/10">${media}</div>
+                    <div class="relative ${aspectClass} rounded-xl overflow-hidden bg-black/40 border border-white/10">${media}</div>
                     <span class="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">${escapeHtml(item.category || 'Project')}</span>
                     <h3 class="font-bold text-white text-base">${escapeHtml(item.title)}</h3>
                     <p class="text-xs text-gray-400">${escapeHtml(item.description || '')}</p>
@@ -902,7 +918,7 @@
                 <div class="flex items-center gap-3 bg-black/30 border border-white/10 rounded-xl p-3">
                     <div class="flex-1 min-w-0">
                         <p class="text-sm font-semibold text-white truncate">${escapeHtml(item.title)}</p>
-                        <p class="text-[11px] text-gray-400 truncate">${escapeHtml(item.category || '')} · ${escapeHtml(item.media_type || '')}</p>
+                        <p class="text-[11px] text-gray-400 truncate">${escapeHtml(item.category || '')} · ${escapeHtml(item.media_type || '')} · ${escapeHtml(item.orientation || 'landscape')}</p>
                     </div>
                     <button onclick="startEdit(${item.id})" class="text-xs font-semibold text-blue-300 hover:text-blue-200 bg-blue-500/10 hover:bg-blue-500/20 px-3 py-1.5 rounded-lg transition"><i class="fa-solid fa-pen"></i> Edit</button>
                     <button onclick="deleteProject(${item.id})" class="text-xs font-semibold text-red-300 hover:text-red-200 bg-red-500/10 hover:bg-red-500/20 px-3 py-1.5 rounded-lg transition"><i class="fa-solid fa-trash"></i> Delete</button>
@@ -915,6 +931,7 @@
             document.getElementById('new-category').value = item.category || 'Social Video Reel';
             document.getElementById('new-description').value = item.description || '';
             document.getElementById('new-type').value = 'url';
+            document.getElementById('new-orientation').value = item.orientation || 'landscape';
             document.getElementById('new-media-url').value = item.media_url || '';
             toggleMediaInputSource();
             document.getElementById('form-heading').innerHTML = '<i class="fa-solid fa-pen text-amber-400"></i> Edit project';
@@ -927,6 +944,7 @@
             document.getElementById('editing-id').value = '';
             document.getElementById('add-project-form').reset();
             document.getElementById('new-type').value = 'local-video';
+            document.getElementById('new-orientation').value = 'landscape';
             toggleMediaInputSource();
             document.getElementById('form-heading').innerHTML = '<i class="fa-solid fa-plus text-amber-400"></i> Add a new project';
             document.getElementById('submit-btn').innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Upload & Publish Project';
@@ -976,6 +994,7 @@
                     title: document.getElementById('new-title').value.trim(),
                     category: document.getElementById('new-category').value,
                     media_type: mediaType, media_url: finalMediaUrl,
+                    orientation: document.getElementById('new-orientation').value,
                     description: document.getElementById('new-description').value.trim()
                 };
                 if (!supabaseClient) { alert('Supabase not connected — cannot save.'); return; }
@@ -1022,7 +1041,8 @@
             } else {
                 inner = `<img src="${a.media_url}" alt="${escapeHtml(a.title)}" class="w-full h-full object-cover">`;
             }
-            return `<div class="relative aspect-video rounded-xl overflow-hidden bg-black/40 border border-white/10 mb-3">${inner}</div>`;
+            const aspectClass = (a.orientation === 'portrait') ? 'aspect-[3/4]' : 'aspect-video';
+            return `<div class="relative ${aspectClass} rounded-xl overflow-hidden bg-black/40 border border-white/10 mb-3">${inner}</div>`;
         }
         function renderAchievementsGrid() {
             const grid = document.getElementById('achievements-grid');
@@ -1045,7 +1065,7 @@
                 <div class="flex items-center gap-3 bg-black/30 border border-white/10 rounded-xl p-3">
                     <div class="flex-1 min-w-0">
                         <p class="text-sm font-semibold text-white truncate">${escapeHtml(a.title)}</p>
-                        <p class="text-[11px] text-gray-400 truncate">${escapeHtml(a.year || '')}${a.issuer ? ' · ' + escapeHtml(a.issuer) : ''}</p>
+                        <p class="text-[11px] text-gray-400 truncate">${escapeHtml(a.year || '')}${a.issuer ? ' · ' + escapeHtml(a.issuer) : ''} · ${escapeHtml(a.orientation || 'landscape')}</p>
                     </div>
                     <button onclick="startAchievementEdit(${a.id})" class="text-xs font-semibold text-blue-300 hover:text-blue-200 bg-blue-500/10 hover:bg-blue-500/20 px-3 py-1.5 rounded-lg transition"><i class="fa-solid fa-pen"></i> Edit</button>
                     <button onclick="deleteAchievement(${a.id})" class="text-xs font-semibold text-red-300 hover:text-red-200 bg-red-500/10 hover:bg-red-500/20 px-3 py-1.5 rounded-lg transition"><i class="fa-solid fa-trash"></i> Delete</button>
@@ -1058,6 +1078,7 @@
             document.getElementById('ach-issuer').value = a.issuer || '';
             document.getElementById('ach-year').value = a.year || '';
             document.getElementById('ach-description').value = a.description || '';
+            document.getElementById('ach-orientation').value = a.orientation || 'landscape';
             if (a.media_url) { document.getElementById('ach-type').value = 'url'; document.getElementById('ach-media-url').value = a.media_url; }
             else { document.getElementById('ach-type').value = 'none'; document.getElementById('ach-media-url').value = ''; }
             toggleAchievementMediaSource();
@@ -1071,6 +1092,7 @@
             document.getElementById('ach-editing-id').value = '';
             document.getElementById('add-achievement-form').reset();
             document.getElementById('ach-type').value = 'none';
+            document.getElementById('ach-orientation').value = 'landscape';
             toggleAchievementMediaSource();
             document.getElementById('ach-keep-media-hint').classList.add('hidden');
             document.getElementById('ach-form-heading').innerHTML = '<i class="fa-solid fa-plus text-yellow-400"></i> Add a new achievement';
@@ -1123,6 +1145,7 @@
                     issuer: document.getElementById('ach-issuer').value.trim(),
                     year: document.getElementById('ach-year').value.trim(),
                     description: document.getElementById('ach-description').value.trim(),
+                    orientation: document.getElementById('ach-orientation').value,
                     media_type: mediaType, media_url: finalMediaUrl
                 };
                 if (editingId) { const { error } = await supabaseClient.from('achievements').update(achievement).eq('id', editingId); if (error) throw error; }
